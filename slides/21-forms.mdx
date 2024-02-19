@@ -1,0 +1,33 @@
+## Forms in React
+
+Interactions--like forms--can be handled as changes
+to the inputs of the computation. A common pattern
+is to treat a form component as "semi-stateless" from
+the outside perspective, where a form is rendered based
+on the given props, unless the user changes something
+(and then the internal state is used).
+
+```js
+const Form = ({ initalState, onSubmit }) => {
+  const [value, setValue] = useState(initialState)
+
+  useEffect(() => {
+    setValue(initalState)
+  }, [initialState])
+
+  const handleChangeText = (val) => {
+    setValue(val)
+  }
+
+  return (
+    <>
+      <TextInput
+        placeholder="Enter your name"
+        value={value}
+        onChangeText={handleChangeText}
+      />
+      <Button title="Submit" onPress={() => onSubmit(value)} />
+    </>
+  )
+}
+```

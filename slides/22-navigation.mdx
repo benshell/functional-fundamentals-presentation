@@ -1,0 +1,26 @@
+## React Router takes a functional approach to navigation
+
+- Everything is a component (i.e. a function)
+  (Remember our Lambda takeaway: even logical operations are just functions)
+
+- Just like our Lambda examples of TRUE and NOT_TRUE
+  which each take in two values and return one of them, components like <Router> take in:
+
+  1. Active route (via React Context from <Routes>)
+  2. Matching route
+  3. Component to render
+  
+```
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="about" element={<About />} />
+    <Route path="store" element={<Store />} />
+  </Routes>
+```
+Each Route component (function) decides what to render, i.e. the Home component, or null.
+It's just like the Lambda function TRUE returns the first argument,
+while NOT_TRUE returns the the second argument.
+
+Note that it's possible for more than one route to match.
+
+Also note that we are not using flow control operators like `if`, `else`, etc.

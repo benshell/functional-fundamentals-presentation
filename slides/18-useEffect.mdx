@@ -1,0 +1,12 @@
+## Dealing with Side Effects
+
+Since side effects are a reality, React attempts to isolate them.
+
+In the current world of hooks, that solution looks like `useEffect`.
+A common pattern goes something like this:
+
+```js
+useEffect(() => {
+  // Do something imperative
+}, [])
+```

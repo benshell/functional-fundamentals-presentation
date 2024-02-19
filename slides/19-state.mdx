@@ -1,0 +1,32 @@
+## Persistent State
+
+There is no such thing in a strictly functional programming language,
+but we're not using a strictly functional language/framework.
+
+Avoid persisting state whenever possible. There are often times I see
+state being used unnecessarily.
+
+DON'T DO THIS:
+
+```js
+const ScaledChart = ({ datapoints }) => {
+  const [scaledDataPoints, setScaledPoints] = useState()
+
+  useEffect(() => {
+    const scaleFactor = 2
+    setScaledPoints(datapoints.map((d) => d * scaleFactor))
+  }, [datapoints])
+
+  return <SvgChart data={scaledDataPoints} />
+}
+```
+
+There was no need for local state:
+
+```js
+const ScaledChart = ({ datapoints }) => {
+  const scaleFactor = 2
+  const scaledDataPoints = datapoints.map((d) => d * scaleFactor)
+  return <SvgChart data={scaledDataPoints} />
+}
+```

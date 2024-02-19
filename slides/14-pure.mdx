@@ -1,0 +1,20 @@
+## Pure
+
+A pure function is a function where the return value is only determined
+by its input values. (i.e. it is a black box)
+
+- Math.sin(x)
+
+- const greeting = (name) => `Hello ${name}!`
+
+But if this component returns different output based on the time of day,
+e.g. "Good morning, World", it is NOT pure:
+
+```js
+const greeting = (name) => {
+  const hour = new Date().getHours()
+  const greeting =
+    hour > 0 && hour < 12 ? "morning" : hour >= 18 ? "evening" : "afternoon"
+  return `Good ${greeting} ${name}!`
+}
+```
